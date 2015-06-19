@@ -1,0 +1,37 @@
+#aksb-buttons-wrap{
+	margin-top: 25px;	
+	margin-bottom: 5px;
+	padding: 0px;
+	margin-left: -15px;
+
+	.twitter-share-button,
+	#___plusone_0,
+	.fb-like,
+	.IN-widget,
+	.pin-it{		
+		display: block !important;
+		float: left !important;
+		margin-left: 15px !important;	
+		margin-top: 15px !important;
+		overflow: hidden !important;
+	}
+
+
+	.twitter-share-button{
+		margin-right: 15px;
+	}
+	#___plusone_0{
+		margin-right: 15px;
+	}
+
+	.fb-like{
+		margin-right: 15px;
+	}
+	.IN-widget{
+		margin-right: 15px;
+	}
+	.pin-it{
+		margin-right: 30px;
+	}
+
+}
