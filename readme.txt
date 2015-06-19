@@ -2,7 +2,7 @@
 Tags: facebook, google, twitter, linkedin, pinterest, share, share buttons, share links
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Contributors: colourstheme
@@ -23,14 +23,17 @@ Upload and install AK Sharing Buttons in the same way you'd install any other pl
 
 == Screenshots ==
 
-1. Sharing buttons with single post, page
-2. Sharing buttons with bbPress forums, topic
+1. Sharing buttons on desktop
+2. Sharing buttons on mobile (responsive design)
 
 == Documentation ==
 
 [Documentation](http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/) is available on ColoursTheme.
 
 == Changelog ==
+= 1.0.4 (2015.06.19) =
++ change screenshots
+
 = 1.0.3 (2015.06.19) =
 + edit description of plugin (readme.txt)
 
