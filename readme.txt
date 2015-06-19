@@ -2,12 +2,12 @@
 Tags: facebook, google, twitter, linkedin, pinterest, share, share buttons, share links
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Contributors: colourstheme
 
-http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/
+Ajax load and append a list of sharing button to single-post, static-page. Ex: facebook, twitter, pinterst, google-plus, linkedin.
 
 == Description ==
 
@@ -31,6 +31,8 @@ Upload and install AK Sharing Buttons in the same way you'd install any other pl
 [Documentation](http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/) is available on ColoursTheme.
 
 == Changelog ==
+= 1.0.3 (2015.06.19) =
++ edit description of plugin (readme.txt)
 
 = 1.0.2 (2015.06.19) =
 + rename Contributors "Alex Kalh" by wordpress's id "colourstheme"
