@@ -3,7 +3,7 @@
 Plugin Name: AK Sharing Buttons
 Plugin URI: http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/
 Description: Ajax load and append a list of sharing button to single-post, static-page. Ex: facebook, twitter, pinterst, google-plus, linkedin.
-Version: 1.0.1
+Version: 1.0.2
 Author: Colours Theme
 Author URI: http://colourstheme.com
 License: GNU General Public License v3 or later

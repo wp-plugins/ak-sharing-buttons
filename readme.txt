@@ -2,10 +2,10 @@
 Tags: facebook, google, twitter, linkedin, pinterest, share, share buttons, share links
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Contributors: Alex Kalh
+Contributors: colourstheme
 
 http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/
 
@@ -31,6 +31,9 @@ Upload and install AK Sharing Buttons in the same way you'd install any other pl
 [Documentation](http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/) is available on ColoursTheme.
 
 == Changelog ==
+
+= 1.0.2 (2015.06.19) =
++ rename Contributors "Alex Kalh" by wordpress's id "colourstheme"
 
 = 1.0.1 (2015.06.18) =
 + remove: constant "AKSB_SECURITY_KEY"
