@@ -2,7 +2,7 @@
 Tags: facebook, google, twitter, linkedin, pinterest, share, share buttons, share links
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Contributors: colourstheme
@@ -23,8 +23,9 @@ Upload and install AK Sharing Buttons in the same way you'd install any other pl
 
 == Screenshots ==
 
-1. Sharing buttons on desktop
-2. Sharing buttons on mobile (responsive design)
+1. Config panel.
+2. Style "Classic - with sharing counter".
+3. Style "Static links (loading fastest - recommended)".
 
 == Documentation ==
 
