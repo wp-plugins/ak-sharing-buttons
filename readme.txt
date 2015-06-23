@@ -23,8 +23,9 @@ Upload and install AK Sharing Buttons in the same way you'd install any other pl
 
 == Screenshots ==
 
-1. Sharing buttons on desktop
-2. Sharing buttons on mobile (responsive design)
+1. Config panel.
+2. Style "Classic - with sharing counter".
+3. Style "Static links (loading fastest - recommended)".
 
 == Documentation ==
 
