@@ -1,37 +1,198 @@
+$white: #FFFFFF;
+$black: #000000;
+$black_light: #DFDFDF;
+
+$line-1-bg-color: #fafafa;
+$line-2-bg-color: #dfdfdf;
+
+$facebook-color: #3B5998;
+$twitter-color: #00A0D1;
+$google-plus-color: #C63D2D;
+$pinterest-color: #910101;
+$rss-color: #FA9B39;
+$youtube-color: #cc181e;
+$linkedin-color: #007bb6;
+$tumblr-color: #32506d;
+$digg-color: #1b5891;
+$reddit-color: #ff1a00;
+$stumbleupon-color: #EB4823;
+$vk-color: #45668e;
+$print-color: #62665e;
+$envelope-color: #FA9B39;
+
+@mixin transition_m($var, $time) {
+    transition: $var $time;
+    -ms-transition: $var $time;
+    -webkit-transition: $var $time;
+    -moz-transition: $var $time;
+}
+
+@font-face {
+	font-family: 'aksb';
+	src:url('../fonts/aksb.eot?yw7lui');
+	src:url('../fonts/aksb.eot?#iefixyw7lui') format('embedded-opentype'),
+		url('../fonts/aksb.ttf?yw7lui') format('truetype'),
+		url('../fonts/aksb.woff?yw7lui') format('woff'),
+		url('../fonts/aksb.svg?yw7lui#aksb') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="aksb_icon_"], [class*=" aksb_icon_"] {
+	font-family: 'aksb';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.aksb_icon_envelope:before {
+	content: "\f003";
+}
+.aksb_icon_print:before {
+	content: "\f02f";
+}
+.aksb_icon_twitter:before {
+	content: "\f099";
+}
+.aksb_icon_facebook:before {
+	content: "\f09a";
+}
+.aksb_icon_pinterest:before {
+	content: "\f0d2";
+}
+.aksb_icon_google-plus:before {
+	content: "\f0d5";
+}
+.aksb_icon_linkedin:before {
+	content: "\f0e1";
+}
+.aksb_icon_tumblr:before {
+	content: "\f173";
+}
+.aksb_icon_vk:before {
+	content: "\f189";
+}
+.aksb_icon_reddit:before {
+	content: "\f1a1";
+}
+.aksb_icon_stumbleupon:before {
+	content: "\f1a4";
+}
+.aksb_icon_digg:before {
+	content: "\f1a6";
+}
+
 #aksb-buttons-wrap{
-	margin-top: 25px;	
-	margin-bottom: 5px;
-	padding: 0px;
-	margin-left: -15px;
 
-	.twitter-share-button,
-	#___plusone_0,
-	.fb-like,
-	.IN-widget,
-	.pin-it{		
-		display: block !important;
-		float: left !important;
-		margin-left: 15px !important;	
-		margin-top: 15px !important;
-		overflow: hidden !important;
-	}
+	&.aksb-layout-classic{
+		margin-top: 25px;	
+		margin-bottom: 5px;
+		padding: 0px;
+		margin-left: -15px;
+
+		.twitter-share-button,
+		#___plusone_0,
+		.fb-like,
+		.IN-widget,
+		.pin-it{		
+			display: block !important;
+			float: left !important;
+			margin-left: 15px !important;	
+			margin-top: 15px !important;
+			overflow: hidden !important;
+		}
 
 
-	.twitter-share-button{
-		margin-right: 15px;
-	}
-	#___plusone_0{
-		margin-right: 15px;
+		.twitter-share-button{
+			margin-right: 15px;
+		}
+		#___plusone_0{
+			margin-right: 15px;
+		}
+
+		.fb-like{
+			margin-right: 15px;
+		}
+		.IN-widget{
+			margin-right: 15px;
+		}
+		.pin-it{
+			margin-right: 30px;
+		}
 	}
 
-	.fb-like{
-		margin-right: 15px;
-	}
-	.IN-widget{
-		margin-right: 15px;
-	}
-	.pin-it{
-		margin-right: 30px;
+	&.aksb-layout-static-links{
+		background-color: $line-1-bg-color;
+		padding: 15px;	
+		margin-top: 25px;	
+		margin-bottom: 5px;
+
+		.aksb-line{
+			text-align: center;
+			
+			&.aksb-first{
+				margin-bottom: 15px;
+				padding-bottom: 15px;
+				border-bottom: 1px solid $line-2-bg-color;				
+			}
+
+			a{
+				display: inline-block;
+				width: 36px;
+				line-height: 36px;
+				height: 36px;
+				text-align: center;
+				background-color: $line-2-bg-color;
+				border: 1px solid transparent;
+				color: #FFF;
+				margin-left: 4.5px;
+				margin-right: 4.5px;
+				text-decoration: none;
+
+				@include transition_m(background-color, 0.5s);
+				@include transition_m(border-color, 0.5s);
+
+				&:hover{
+					background-color: $white !important;
+
+					&.aksb-facebook{color: $facebook-color; border-color: $facebook-color;}
+					&.aksb-twitter{color: $twitter-color; border-color: $twitter-color;}
+					&.aksb-google-plus{color: $google-plus-color; border-color: $google-plus-color;}
+					&.aksb-pinterest{color: $pinterest-color; border-color: $pinterest-color;}
+					&.aksb-linkedin{color: $linkedin-color; border-color: $linkedin-color;}
+					&.aksb-tumblr{color: $tumblr-color; border-color: $tumblr-color;}
+					&.aksb-digg{color: $digg-color; border-color: $digg-color;}
+					&.aksb-reddit{color: $reddit-color; border-color: $reddit-color;}
+					&.aksb-stumbleupon{color: $stumbleupon-color; border-color: $stumbleupon-color;}
+					&.aksb-vk{color: $vk-color; border-color: $vk-color;}
+					&.aksb-print{color: $print-color; border-color: $print-color;}
+					&.aksb-envelope{color: $envelope-color; border-color: $envelope-color;}
+				}
+
+				i{
+					font-size: 16px;
+				}				
+
+				&.aksb-facebook{background-color: $facebook-color;}
+				&.aksb-twitter{background-color: $twitter-color;}
+				&.aksb-google-plus{background-color: $google-plus-color;}
+				&.aksb-pinterest{background-color: $pinterest-color;}
+				&.aksb-linkedin{background-color: $linkedin-color;}
+				&.aksb-tumblr{background-color: $tumblr-color;}
+				&.aksb-digg{background-color: $digg-color;}
+				&.aksb-reddit{background-color: $reddit-color;}
+				&.aksb-stumbleupon{background-color: $stumbleupon-color;}
+				&.aksb-vk{background-color: $vk-color;}
+				&.aksb-print{background-color: $print-color;}
+				&.aksb-envelope{background-color: $envelope-color;}
+			}
+		}
+
 	}
 
 }

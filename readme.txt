@@ -31,6 +31,9 @@ Upload and install AK Sharing Buttons in the same way you'd install any other pl
 [Documentation](http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/) is available on ColoursTheme.
 
 == Changelog ==
+= 1.0.5 (2015.06.24) =
++ add new style (layout) : Static links (loading fastest - recommended)
+
 = 1.0.4 (2015.06.19) =
 + change screenshots
 

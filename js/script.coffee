@@ -6,7 +6,7 @@ jQuery(window).load ->
 
 AKSB =	
 	load: () ->
-		aksb_wrap = jQuery '#aksb-buttons-wrap'
+		aksb_wrap = jQuery '#aksb-buttons-wrap.aksb-layout-classic'
 		
 		if aksb_wrap.length
 

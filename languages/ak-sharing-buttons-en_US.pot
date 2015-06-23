@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AK Sharing Buttons\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 11:35+0700\n"
-"PO-Revision-Date: 2015-06-16 11:35+0700\n"
+"POT-Creation-Date: 2015-06-24 00:22+0700\n"
+"PO-Revision-Date: 2015-06-24 00:22+0700\n"
 "Last-Translator: thanh4890 <thanh4890@gmail.com>\n"
 "Language-Team: Colours Theme <colourstheme@gmail.com>\n"
 "Language: en_US\n"
@@ -19,6 +19,58 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: ak-sharing-buttons.php:117
-msgid "Pin It"
+#: ak-sharing-buttons.php:74
+msgid "Classic - with sharing counter"
+msgstr ""
+
+#: ak-sharing-buttons.php:75
+msgid "Static links (loading fastest - recommended)"
+msgstr ""
+
+#: ak-sharing-buttons.php:176
+msgid "Share on Facebook"
+msgstr ""
+
+#: ak-sharing-buttons.php:185
+msgid "Share on Twitter"
+msgstr ""
+
+#: ak-sharing-buttons.php:194
+msgid "Share on Google plus"
+msgstr ""
+
+#: ak-sharing-buttons.php:204
+msgid "Share on Pinterest"
+msgstr ""
+
+#: ak-sharing-buttons.php:212
+msgid "Share on Linkedin"
+msgstr ""
+
+#: ak-sharing-buttons.php:221
+msgid "Share on Tumblr"
+msgstr ""
+
+#: ak-sharing-buttons.php:236
+msgid "Share on Digg"
+msgstr ""
+
+#: ak-sharing-buttons.php:245
+msgid "Share on Reddit"
+msgstr ""
+
+#: ak-sharing-buttons.php:254
+msgid "Share on Stumbleupon"
+msgstr ""
+
+#: ak-sharing-buttons.php:263
+msgid "Share on Vkontakte"
+msgstr ""
+
+#: ak-sharing-buttons.php:270
+msgid "Print this article"
+msgstr ""
+
+#: ak-sharing-buttons.php:278
+msgid "Share on Email"
 msgstr ""

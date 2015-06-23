@@ -3,7 +3,7 @@
 Plugin Name: AK Sharing Buttons
 Plugin URI: http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/
 Description: Ajax load and append a list of sharing button to single-post, static-page. Ex: facebook, twitter, pinterst, google-plus, linkedin.
-Version: 1.0.4
+Version: 1.0.5
 Author: Colours Theme
 Author URI: http://colourstheme.com
 License: GNU General Public License v3 or later
@@ -36,10 +36,59 @@ class AK_Sharing_Buttons {
 				add_action('loop_end', array($this, 'loop_end'));				
 				add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
 				add_action('wp_footer', array($this, 'add_security_key'));							
+		}else{
+			add_action( 'admin_init', array($this, 'admin_init'));
 		}
 
 		add_action('wp_ajax_aksb_load_sharing_buttons', array($this, 'load_sharing_buttons'));
 		add_action('wp_ajax_nopriv_aksb_load_sharing_buttons', array($this, 'load_sharing_buttons'));					
+	}
+
+	public function admin_init(){
+	 	add_settings_section(
+			'aksb_config',
+			'AK Sharing Buttons',
+			array($this,'setting_section_callback_function'),
+			'reading'
+		);
+	 	
+	 	add_settings_field(
+			'aksb_style',
+			'Style',
+			array($this,'setting_callback_function'),
+			'reading',
+			'aksb_config'
+		);
+	 	
+	 	register_setting( 'reading', 'aksb_style' );		
+	}
+
+	public function setting_section_callback_function() {
+		printf('Select a style for sharing buttons.');
+	}
+
+
+	function setting_callback_function() {
+		$selected = get_option('aksb_style', 'static-links');
+		$options = array(
+			'classic'       => __('Classic - with sharing counter', 'ak-sharing-buttons'),
+			'static-links'  => __('Static links (loading fastest - recommended)', 'ak-sharing-buttons')			
+		);
+		?>
+		<select name="aksb_style" id="aksb_style">
+			<?php 
+			foreach ($options as $option_value => $option_label) {
+				?>
+				<option 
+					value="<?php echo esc_attr($option_value); ?>" 
+					<?php selected( $selected, $option_value, true); ?>>
+					<?php echo esc_attr($option_label); ?>
+				</option>
+				<?php
+			}
+			?>
+		</select>
+		<?php		
 	}
 
 	/*
@@ -82,10 +131,162 @@ class AK_Sharing_Buttons {
 	 */	
 	public function add_buttons_wrap($content){		
 		if(!empty($content)){
-			$content .= '<div id="aksb-buttons-wrap" class="clearfix"></div>';
+			$style = get_option('aksb_style', 'classic');
+			switch ($style) {
+				case 'classic':
+					$content .= $this->get_layout_classic();
+					break;
+				default:
+					$content .= $this->get_layout_static_links();
+					break;
+			}		
 		}
 
 		return $content;
+	}
+
+	public function get_layout_classic(){
+		return '<div id="aksb-buttons-wrap" class="aksb-layout-classic clearfix"></div>';
+	}
+
+	public function get_layout_gooey_effect(){
+		ob_start();
+		?>
+		gooey_effect
+		<?php
+		return ob_get_clean();
+	}
+
+	public function get_layout_static_links(){
+		wp_reset_postdata();
+		
+		global $post;
+		$post_id    = $post->ID;
+		$post_url   = get_permalink($post_id);
+		$post_title = get_the_title($post);
+		$post_name  = get_post_field('post_name', $post);
+
+		ob_start();
+		?>
+		<div id="aksb-buttons-wrap" class="aksb-layout-static-links">
+		    
+		    <div class="aksb-line aksb-first clearfix">
+			    <!-- Facebook -->
+			    <?php $url = sprintf('http://www.facebook.com/sharer.php?u=%s', $post_url); ?>
+			    <a class="aksb-facebook" 
+				    target="_blank"
+				    title="<?php _e('Share on Facebook', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			    	<i class="aksb_icon_facebook"></i>
+			    </a>
+
+			    <!-- Twitter -->
+			    <?php $url = sprintf('https://twitter.com/share?url=%s&amp;name=%s&amp;hashtags=%s', $post_url, $post_title, $post_name); ?>
+			    <a class="aksb-twitter" 
+				    target="_blank"
+				    title="<?php _e('Share on Twitter', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			        <i class="aksb_icon_twitter"></i>
+			    </a>
+
+			    <!-- Google+ -->
+			    <?php $url = sprintf('https://plus.google.com/share?url=%s', $post_url); ?>
+			    <a class="aksb-google-plus" 
+			    	target="_blank"
+				    title="<?php _e('Share on Google plus', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			        <i class="aksb_icon_google-plus"></i>
+			    </a>
+
+			    
+			    <!-- Pinterest -->			    
+			    <a class="aksb-pinterest" 
+			    	href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"
+			    	target="_blank"
+				    title="<?php _e('Share on Pinterest', 'ak-sharing-buttons'); ?>">
+			       <i class="aksb_icon_pinterest"></i>
+			    </a>
+
+			    <!-- LinkedIn -->
+			    <?php $url = sprintf('http://www.linkedin.com/shareArticle?mini=true&amp;url=%s', $post_url); ?>
+			    <a class="aksb-linkedin" 
+						target="_blank"
+				    title="<?php _e('Share on Linkedin', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">			    
+			        <i class="aksb_icon_linkedin"></i>
+			    </a>
+
+			    <!-- Tumblr-->
+			    <?php $url = sprintf('http://www.tumblr.com/share/link?url=%s&amp;title=', $post_url, $post_title); ?>
+			    <a class="aksb-tumblr" 
+						target="_blank"
+				    title="<?php _e('Share on Tumblr', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			         <i class="aksb_icon_tumblr"></i>
+			    </a>
+
+		  	</div>
+
+
+
+		  	<div class="aksb-line aksb-last clearfix">
+
+			    <!-- Digg -->
+			    <?php $url = sprintf('http://www.digg.com/submit?url=%s', $post_url); ?>
+			    <a class="aksb-digg"
+			    	target="_blank"
+				    title="<?php _e('Share on Digg', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			        <i class="aksb_icon_digg"></i>
+			    </a>
+			            
+			    <!-- Reddit -->
+			    <?php $url = sprintf('http://reddit.com/submit?url=%s&amp;title=%s', $post_url, $post_title); ?>
+			    <a class="aksb-reddit"
+			    	target="_blank"
+				    title="<?php _e('Share on Reddit', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			       <i class="aksb_icon_reddit"></i> 
+			    </a>
+			    
+			    <!-- StumbleUpon-->
+			    <?php $url = sprintf('http://www.stumbleupon.com/submit?url=%s&amp;title=%s', $post_url, $post_title); ?>
+			    <a class="aksb-stumbleupon"
+			    	target="_blank"
+				    title="<?php _e('Share on Stumbleupon', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			        <i class="aksb_icon_stumbleupon"></i>
+			    </a>
+			    
+			    <!-- VK -->
+			    <?php $url = sprintf('http://vkontakte.ru/share.php?url=%s', $post_url); ?>
+			    <a class="aksb-vk"
+			    	target="_blank"
+				    title="<?php _e('Share on Vkontakte', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">
+			        <i class="aksb_icon_vk"></i>
+			    </a>
+			    
+			    <!-- Print -->			    
+			    <a class="aksb-print" href="javascript:;" onclick="window.print()"
+			    	title="<?php _e('Print this article', 'ak-sharing-buttons'); ?>">
+			        <i class="aksb_icon_print"></i>
+			    </a>
+
+			    <!-- Email -->
+			    <?php $url = sprintf('mailto:?Subject=%s&amp;Body=%s', $post_title, $post_url); ?>
+			    <a class="aksb-envelope" 
+			    	target="_blank"
+				    title="<?php _e('Share on Email', 'ak-sharing-buttons'); ?>"
+				    href="<?php echo esc_attr($url); ?>">			    
+			         <i class="aksb_icon_envelope"></i>
+			    </a>			    
+		    </div>
+		 
+		</div>
+		
+		<?php		
+		return ob_get_clean();
 	}
 
 	/*
