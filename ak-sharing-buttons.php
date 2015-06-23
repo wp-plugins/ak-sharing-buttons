@@ -131,7 +131,7 @@ class AK_Sharing_Buttons {
 	 */	
 	public function add_buttons_wrap($content){		
 		if(!empty($content)){
-			$style = get_option('aksb_style', 'classic');
+			$style = get_option('aksb_style', 'static-links');
 			switch ($style) {
 				case 'classic':
 					$content .= $this->get_layout_classic();
