@@ -3,7 +3,7 @@
 Plugin Name: AK Sharing Buttons
 Plugin URI: http://colourstheme.com/forums/forum/wordpress/plugin/ak-sharing-buttons/
 Description: Ajax load and append a list of sharing button to single-post, static-page. Ex: facebook, twitter, pinterst, google-plus, linkedin.
-Version: 1.0.5
+Version: 1.0.6
 Author: Colours Theme
 Author URI: http://colourstheme.com
 License: GNU General Public License v3 or later
@@ -110,7 +110,7 @@ class AK_Sharing_Buttons {
 	 * And add fiter to append button wrap
 	 */
 	public function loop_start($query){
-		if($query->is_main_query() && is_singular()){
+		if($query->is_main_query() && is_singular('post')){
 			add_filter('the_content', array($this, 'add_buttons_wrap'));
 		}
 	}
@@ -120,7 +120,7 @@ class AK_Sharing_Buttons {
 	 * Remove filter the_content / add_buttons_wrap after fire it.
 	 */
 	public function loop_end($query){
-		if($query->is_main_query()  && is_singular()){
+		if($query->is_main_query()  && is_singular('post')){
 			remove_filter('the_content', array($this, 'add_buttons_wrap'));
 		}
 	}
@@ -146,14 +146,16 @@ class AK_Sharing_Buttons {
 	}
 
 	public function get_layout_classic(){
-		return '<div id="aksb-buttons-wrap" class="aksb-layout-classic clearfix"></div>';
+		ob_start();		
+		?>
+		<div class="clearfix"></div>
+		<div id="aksb-buttons-wrap" class="aksb-layout-classic clearfix"></div>
+		<?php
+		return ob_get_clean();
 	}
 
 	public function get_layout_gooey_effect(){
-		ob_start();
-		?>
-		gooey_effect
-		<?php
+		ob_start();		
 		return ob_get_clean();
 	}
 
@@ -168,7 +170,8 @@ class AK_Sharing_Buttons {
 
 		ob_start();
 		?>
-		<div id="aksb-buttons-wrap" class="aksb-layout-static-links">
+		<div class="clearfix"></div>
+		<div id="aksb-buttons-wrap" class="aksb-layout-static-links clearfix">
 		    
 		    <div class="aksb-line aksb-first clearfix">
 			    <!-- Facebook -->
@@ -201,8 +204,7 @@ class AK_Sharing_Buttons {
 			    
 			    <!-- Pinterest -->			    
 			    <a class="aksb-pinterest" 
-			    	href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"
-			    	target="_blank"
+			    	href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"			    	
 				    title="<?php _e('Share on Pinterest', 'ak-sharing-buttons'); ?>">
 			       <i class="aksb_icon_pinterest"></i>
 			    </a>
